@@ -5,31 +5,76 @@
 	<cstdio>
 	<windows.h>
 
-1396721952 source:c:\users\susan\desktop\hackathon\main.cpp
+1396730454 source:c:\users\susan\desktop\hackathon\main.cpp
 	<windows.h>
 	<gl/gl.h>
 	"GenerateTexture.h"
 	<cstdio>
 	"Building.h"
 	"Point.h"
-	"Player.h"
 	"Country.h"
 	<WindowsX.h>
+	<math.h>
+	"GameTurn.h"
+	"Player.h"
 
 1396669371 c:\users\susan\desktop\hackathon\generatetexture.h
 	<cstdio>
 
-1396713819 source:c:\users\susan\desktop\hackathon\building.cpp
-
-1396713819 source:c:\users\susan\desktop\hackathon\point.cpp
-
-1396716030 c:\users\susan\desktop\hackathon\building.h
+1396730255 source:c:\users\susan\desktop\hackathon\building.cpp
 	"Point.h"
 	"Player.h"
+	<cstdio>
+	<stdlib.h>
+	<string>
+	"Building.h"
 
-1396715882 c:\users\susan\desktop\hackathon\point.h
+1396730565 source:c:\users\susan\desktop\hackathon\point.cpp
+	"Point.h"
 
-1396715007 c:\users\susan\desktop\hackathon\player.h
+1396730406 c:\users\susan\desktop\hackathon\building.h
+	"Player.h"
+	"Point.h"
 
-1396722093 c:\users\susan\desktop\hackathon\country.h
+1396730419 c:\users\susan\desktop\hackathon\point.h
+
+1396730390 c:\users\susan\desktop\hackathon\player.h
+	<string>
+
+1396731863 c:\users\susan\desktop\hackathon\country.h
+	<vector>
+	"Point.h"
+	"Building.h"
+	<string>
+
+1396731593 source:c:\users\susan\desktop\hackathon\gameturn.cpp
+	<iostream>
+	"Player.h"
+	<cstdio>
+
+1396727020 c:\users\susan\desktop\hackathon\gameturn.h
+
+1396730609 source:c:\users\susan\desktop\hackathon\setup.cpp
+	<stdio.h>
+	<iostream>
+	<sstream>
+	"Player.h"
+	"Country.h"
+
+1396731856 source:c:\users\susan\desktop\hackathon\country.cpp
+	<vector>
+	"Point.h"
+	"Building.h"
+	<string>
+	<cstdio>
+	<stdlib.h>
+	"Country.h"
+
+1396730557 source:c:\users\susan\desktop\hackathon\player.cpp
+	<string>
+	"Player.h"
+
+1396731919 source:c:\users\susan\desktop\hackathon\validation.cpp
+	<string>
+	"Country.h"
 

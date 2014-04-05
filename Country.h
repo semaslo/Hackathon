@@ -2,36 +2,22 @@
 #define COUNTRY_H_INCLUDED
 
 #include <vector>
-
+#include "Point.h"
+#include "Building.h"
+#include <string>
 using namespace std;
 class Country{
 public:
-    Country(Point* pos, float radius);
+    Country(Point* pos, float radius, string name);
     ~Country();
     Point* GetCenter();
     float GetRadius();
+    string GetName();
+    std::vector<Building> buildings;
 private:
     Point* center;
     float radius;
-    vector<Building> buildings;
+
+    string name;
 };
-
-Country::Country(Point* pos, float radius){
-    Country::center = pos;
-    Country::radius = radius;
-    buildings = vector<Building>();
-}
-
-Country::~Country(){
-    free(center);
-}
-
-Point* Country::GetCenter(){
-    return center;
-}
-
-float Country::GetRadius(){
-    return radius;
-}
-
 #endif // COUNTRY_H_INCLUDED
