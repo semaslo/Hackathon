@@ -4,10 +4,12 @@
 #include <cstdio>
 #include "Building.h"
 #include "Point.h"
-#include "Player.h"
 #include "Country.h"
 #include <WindowsX.h>
 #include <math.h>
+#include "GameTurn.h"
+#include "Player.h"
+
 
 LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
 void EnableOpenGL(HWND hwnd, HDC*, HGLRC*);
@@ -15,10 +17,10 @@ void DisableOpenGL(HWND, HDC, HGLRC);
 void LeftMouseDown(LPARAM lParam);
 void RightMouseDown(LPARAM lParam);
 void InitiateCountries(char* filename);
+void CloseOut();
 
 Country* Countries;
 int num_countries;
-Player* Players;
 //Buildings* Buildings;
 
 int WINAPI WinMain(HINSTANCE hInstance,
@@ -132,6 +134,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
     glDeleteTextures(1, &texture1);
     /* shutdown OpenGL */
     DisableOpenGL(hwnd, hDC, hRC);
+    CloseOut();
 
     /* destroy the window explicitly */
     DestroyWindow(hwnd);
@@ -215,17 +218,29 @@ void DisableOpenGL (HWND hwnd, HDC hDC, HGLRC hRC)
 }
 
 void LeftMouseDown(LPARAM lParam){
-    int x = GET_X_LPARAM(lParam);
-    int y = GET_Y_LPARAM(lParam);
+    //int x = GET_X_LPARAM(lParam);
+    //int y = GET_Y_LPARAM(lParam);
+    /*Country* currentCountry = NULL;
     for(int i = 0; i < num_countries; i++){
         Country* country = &(Countries[i]);
-    }
+        Point* center = country->GetCenter();
+        float distance = sqrt(pow(abs(x - center->GetX()), 2) + pow(abs(y-center->GetX()), 2));
+        if(distance <= country->GetRadius()){
+            printf("%f\n", country->GetRadius());
+            currentCountry=country;
+            break;
+        }
+    }*/
+    /*printf("Left Click\n");
+    if(currentCountry != NULL){
+        printf("%s\n", currentCountry->GetName());
+    }*/
 }
 
 void RightMouseDown(LPARAM lParam){
-    int x = GET_X_LPARAM(lParam);
-    int y = GET_Y_LPARAM(lParam);
-    printf("Right: %d %d\n", x, y);
+    //int x = GET_X_LPARAM(lParam);
+    //int y = GET_Y_LPARAM(lParam);
+    //printf("Right: %d %d\n", x, y);
 }
 
 void InitiateCountries(char* filename){
@@ -243,6 +258,11 @@ void InitiateCountries(char* filename){
     for(int i = 0; i < num_countries; i++){
         fscanf(file, "%s %d %d\n", name, &x, &y);
         temp = Point(x, y);
-        Countries[i] = Country(&temp, 1.5f);
+        Countries[i] = Country(&temp, 100.0f, name);
     }
+    //TODO initiate adjacency matrix
+}
+
+void CloseOut(){
+    free(Countries);
 }

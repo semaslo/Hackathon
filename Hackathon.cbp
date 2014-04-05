@@ -39,9 +39,23 @@
 			<Add library="opengl32" />
 			<Add library="glu32" />
 		</Linker>
+		<Unit filename="Building.cpp" />
+		<Unit filename="Building.h" />
+		<Unit filename="Country.cpp" />
+		<Unit filename="Country.h" />
+		<Unit filename="GameTurn.cpp" />
+		<Unit filename="GameTurn.h" />
 		<Unit filename="GenerateTexture.h" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.h" />
+		<Unit filename="Point.cpp" />
+		<Unit filename="Point.h" />
+		<Unit filename="Validation.cpp" />
+		<Unit filename="Validation.h" />
 		<Unit filename="generatetexture.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="setup.cpp" />
+		<Unit filename="setup.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
