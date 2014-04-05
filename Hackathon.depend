@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1396717766 source:c:\users\susan\desktop\hackathon\generatetexture.cpp
+	<gl/glu.h>
+	<gl/gl.h>
+	<cstdio>
+	<windows.h>
+
+1396721952 source:c:\users\susan\desktop\hackathon\main.cpp
+	<windows.h>
+	<gl/gl.h>
+	"GenerateTexture.h"
+	<cstdio>
+	"Building.h"
+	"Point.h"
+	"Player.h"
+	"Country.h"
+	<WindowsX.h>
+
+1396669371 c:\users\susan\desktop\hackathon\generatetexture.h
+	<cstdio>
+
+1396713819 source:c:\users\susan\desktop\hackathon\building.cpp
+
+1396713819 source:c:\users\susan\desktop\hackathon\point.cpp
+
+1396716030 c:\users\susan\desktop\hackathon\building.h
+	"Point.h"
+	"Player.h"
+
+1396715882 c:\users\susan\desktop\hackathon\point.h
+
+1396715007 c:\users\susan\desktop\hackathon\player.h
+
+1396722093 c:\users\susan\desktop\hackathon\country.h
+
