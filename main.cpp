@@ -9,19 +9,25 @@
 #include <math.h>
 #include "GameTurn.h"
 #include "Player.h"
+#include <iostream>
+#include "setup.h"
+#include "Drawing.h"
 
-
+using namespace std;
 LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
 void EnableOpenGL(HWND hwnd, HDC*, HGLRC*);
 void DisableOpenGL(HWND, HDC, HGLRC);
 void LeftMouseDown(LPARAM lParam);
 void RightMouseDown(LPARAM lParam);
-void InitiateCountries(char* filename);
 void CloseOut();
+void DrawBoard(int width, int height);
 
-Country* Countries;
+Country** Countries;
 int num_countries;
-//Buildings* Buildings;
+extern Player *player;
+extern Country *country;
+extern int numPlayers;
+extern char** roads;
 
 int WINAPI WinMain(HINSTANCE hInstance,
                    HINSTANCE hPrevInstance,
@@ -35,7 +41,6 @@ int WINAPI WinMain(HINSTANCE hInstance,
     HGLRC hRC;
     MSG msg;
     BOOL bQuit = FALSE;
-    float theta = 0.0f;
 
     /* register window class */
     wcex.cbSize = sizeof(WNDCLASSEX);
@@ -76,7 +81,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
     sprintf(countries, "Countries.txt");
     InitiateCountries(countries);
     free(countries);
-
+    setup();
 
     int width = 924;
     int height = 693;
@@ -88,10 +93,15 @@ int WINAPI WinMain(HINSTANCE hInstance,
     FILE* fp = fopen("texture5.bmp", "rb");
     GLuint texture1 = generatetexture(fp);
     fclose(fp);
+    int a = 0;
 
+    DrawBoard(width, height);
+    SwapBuffers(hDC);
     /* program main loop */
     while (!bQuit)
     {
+        Player* player2 = &(player[a]);
+        GameTurn(player2);
         /* check for messages */
         if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
         {
@@ -106,30 +116,9 @@ int WINAPI WinMain(HINSTANCE hInstance,
                 DispatchMessage(&msg);
             }
         }
-        else
-        {
-            glClearColor(1.0f, 1.0f, 0.0f, 0.0f);
-            glClear(GL_COLOR_BUFFER_BIT);
-
-            //glPushMatrix();
-            //glRotatef(theta, 0.0f, 0.0f, 1.0f);
-
-           glBegin(GL_QUADS);
-                glColor3f(1.0f, 1.0f, 1.0f);
-                glTexCoord2f(0.0f, 1.0f);   glVertex2f(-1.0f,   1.0f);
-                glTexCoord2f(0.0f, 0.0f);  glVertex2f(-1.0f, -1.0f);
-                glTexCoord2f(1.0f, 0.0f);  glVertex2f(1.0f, -1.0f);
-                glTexCoord2f(1.0f, 1.0f);  glVertex2f(1.0f, 1.0f);
-
-            glEnd();
-
-            //glPopMatrix();
-
-            SwapBuffers(hDC);
-
-            theta += 1.0f;
-            Sleep (1);
-        }
+        DrawBoard(width, height);
+        SwapBuffers(hDC);
+        a = a % numPlayers;
     }
     glDeleteTextures(1, &texture1);
     /* shutdown OpenGL */
@@ -243,26 +232,47 @@ void RightMouseDown(LPARAM lParam){
     //printf("Right: %d %d\n", x, y);
 }
 
-void InitiateCountries(char* filename){
-    FILE* file = fopen(filename, "rb");
-    if(file == NULL){
-        printf("File did not open");
-        return;
-    }
-    fscanf(file, "%d\n", &num_countries);
-    char name[20];
-    int x;
-    int y;
-    Point temp = Point(0, 0);
-    Countries = (Country*)calloc(num_countries, sizeof(Country));
-    for(int i = 0; i < num_countries; i++){
-        fscanf(file, "%s %d %d\n", name, &x, &y);
-        temp = Point(x, y);
-        Countries[i] = Country(&temp, 100.0f, name);
-    }
-    //TODO initiate adjacency matrix
-}
-
 void CloseOut(){
     free(Countries);
+}
+
+void DrawBoard(int width, int height){
+    for(int i = 0; i < num_countries; i++){
+        printf("%d %d\n", Countries[i]->GetCenter()->GetX(), Countries[i]->GetCenter()->GetY());
+
+    }
+    glClearColor(1.0f, 1.0f, 0.0f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_QUADS);
+    glColor3f(1.0f, 1.0f, 1.0f);
+        glTexCoord2f(0.0f, 1.0f);   glVertex2f(-1.0f,   1.0f);
+        glTexCoord2f(0.0f, 0.0f);  glVertex2f(-1.0f, -1.0f);
+        glTexCoord2f(1.0f, 0.0f);  glVertex2f(1.0f, -1.0f);
+        glTexCoord2f(1.0f, 1.0f);  glVertex2f(1.0f, 1.0f);
+
+    glEnd();
+    Sleep (1);
+    printf("\n\n");
+    for(int i = 0; i < num_countries; i++){
+        vector<Building> buildings = Countries[i]->buildings;
+        int size = buildings.size();
+        for(int j = 0; j < size; j++){
+            Building building = buildings[j];
+            if(building.GetType().compare("soldier") == 0){
+                glColor3f(1.0, 0.0, 0.0);
+                DrawSoldier(Countries[i]->GetCenter()->GetX(), Countries[i]->GetCenter()->GetY(), width, height);
+            }
+        }
+    }
+    for(int i = 0; i < num_countries; i++){
+        for(int j = 0; j < num_countries;j ++){
+            if(roads[i][j] == 2){
+                printf("Building Road!!!\n");
+                DrawRoads(Countries[i], Countries[j], width, height);
+            }
+        }
+
+    }
+
+
 }

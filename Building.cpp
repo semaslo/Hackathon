@@ -4,15 +4,14 @@
 #include <stdlib.h>
 #include <string>
 #include "Building.h"
-Building::Building(char* type, Player* owner, int x, int y){
+Building::Building(string type, Player* owner, int x, int y){
     Building::owner = owner;
-    Building::type = (char*)malloc(strlen(type)*sizeof(char));
+    Building::type = type;
     Building::pos = new Point(x, y);
 }
 
 Building::~Building(){
     Building::pos->~Point();
-    free(type);
 }
 
 void Building::SetPosition(int x, int y){
@@ -26,7 +25,7 @@ Player* Building::GetOwner(){
     return owner;
 }
 
-char* Building::GetType(){
+string Building::GetType(){
     return type;
 }
 

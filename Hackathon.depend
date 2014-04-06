@@ -5,7 +5,7 @@
 	<cstdio>
 	<windows.h>
 
-1396730454 source:c:\users\susan\desktop\hackathon\main.cpp
+1396747724 source:c:\users\susan\desktop\hackathon\main.cpp
 	<windows.h>
 	<gl/gl.h>
 	"GenerateTexture.h"
@@ -17,11 +17,14 @@
 	<math.h>
 	"GameTurn.h"
 	"Player.h"
+	<iostream>
+	"setup.h"
+	"Drawing.h"
 
 1396669371 c:\users\susan\desktop\hackathon\generatetexture.h
 	<cstdio>
 
-1396730255 source:c:\users\susan\desktop\hackathon\building.cpp
+1396737457 source:c:\users\susan\desktop\hackathon\building.cpp
 	"Point.h"
 	"Player.h"
 	<cstdio>
@@ -32,36 +35,40 @@
 1396730565 source:c:\users\susan\desktop\hackathon\point.cpp
 	"Point.h"
 
-1396730406 c:\users\susan\desktop\hackathon\building.h
+1396737436 c:\users\susan\desktop\hackathon\building.h
 	"Player.h"
 	"Point.h"
+	<string>
 
 1396730419 c:\users\susan\desktop\hackathon\point.h
 
 1396730390 c:\users\susan\desktop\hackathon\player.h
 	<string>
 
-1396731863 c:\users\susan\desktop\hackathon\country.h
+1396740803 c:\users\susan\desktop\hackathon\country.h
 	<vector>
 	"Point.h"
 	"Building.h"
 	<string>
 
-1396731593 source:c:\users\susan\desktop\hackathon\gameturn.cpp
+1396745134 source:c:\users\susan\desktop\hackathon\gameturn.cpp
 	<iostream>
 	"Player.h"
 	<cstdio>
+	"Country.h"
+	"Validation.h"
 
-1396727020 c:\users\susan\desktop\hackathon\gameturn.h
+1396741224 c:\users\susan\desktop\hackathon\gameturn.h
 
-1396730609 source:c:\users\susan\desktop\hackathon\setup.cpp
+1396743047 source:c:\users\susan\desktop\hackathon\setup.cpp
 	<stdio.h>
 	<iostream>
 	<sstream>
 	"Player.h"
 	"Country.h"
+	<stdlib.h>
 
-1396731856 source:c:\users\susan\desktop\hackathon\country.cpp
+1396740793 source:c:\users\susan\desktop\hackathon\country.cpp
 	<vector>
 	"Point.h"
 	"Building.h"
@@ -74,7 +81,22 @@
 	<string>
 	"Player.h"
 
-1396731919 source:c:\users\susan\desktop\hackathon\validation.cpp
+1396741795 source:c:\users\susan\desktop\hackathon\validation.cpp
 	<string>
 	"Country.h"
+	<vector>
+	"Building.h"
+
+1396733237 c:\users\susan\desktop\hackathon\globals.h
+
+1396741792 c:\users\susan\desktop\hackathon\validation.h
+
+1396735653 c:\users\susan\desktop\hackathon\setup.h
+
+1396747666 source:c:\users\susan\desktop\hackathon\drawing.cpp
+	<gl/gl.h>
+	<cstdio>
+	"Country.h"
+
+1396744697 c:\users\susan\desktop\hackathon\drawing.h
 

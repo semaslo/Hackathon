@@ -1,8 +1,7 @@
-40
+41
 Thasos 69 29
 Botrus 224 20
 Aquae 34 132
-Anvers 131 131
 Estall 184 169
 Tunis 40 308
 Flaus 164 339
@@ -39,3 +38,4 @@ Shirasu 652 284
 Teverya 773 287
 Sopeira 806 162
 Aera 638 80
+Cadis 550 428
