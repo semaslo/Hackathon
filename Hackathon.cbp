@@ -43,6 +43,8 @@
 		<Unit filename="Building.h" />
 		<Unit filename="Country.cpp" />
 		<Unit filename="Country.h" />
+		<Unit filename="Drawing.cpp" />
+		<Unit filename="Drawing.h" />
 		<Unit filename="GameTurn.cpp" />
 		<Unit filename="GameTurn.h" />
 		<Unit filename="GenerateTexture.h" />

@@ -3,10 +3,12 @@
 
 #include "Player.h"
 #include "Point.h"
+#include <string>
+using namespace std;
 class Building{
     public:
         //Constructor
-        Building(char* type, Player* owner, int x, int y);
+        Building(string type, Player* owner, int x, int y);
         //Destructor
         ~Building();
         //Setting variables
@@ -14,13 +16,13 @@ class Building{
         void SetPosition(Point* point);
         //Getting
         Point* GetPosition();
-        char* GetType();
+        string GetType();
         Player* GetOwner();
     private:
         //Position
         Point* pos;
         //Type of building
-        char* type;
+        string type;
         //Player who owns building, NULL if no owner
         Player* owner;
 };

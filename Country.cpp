@@ -8,11 +8,12 @@
 using namespace std;
 
 
-Country::Country(Point* pos, float radius, string name){
-    Country::center = pos;
+Country::Country(Point pos, float radius, string name, int countryID){
+    Country::center = new Point(pos.GetX(), pos.GetY());
     Country::radius = radius;
     Country::buildings = vector<Building>();
     Country::name = name;
+    Country::countryID = countryID;
 }
 
 Country::~Country(){
@@ -29,4 +30,8 @@ float Country::GetRadius(){
 
 string Country::GetName(){
     return Country::name;
+}
+
+int Country::GetID(){
+    return countryID;
 }
